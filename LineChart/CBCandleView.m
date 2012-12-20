@@ -33,12 +33,6 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-//    <string>6.79</string>
-//    <string>6.68</string>
-//    <string>6.83</string>
-//    <string>6.62</string>
-    
-    
     double zoomScale = 100;
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -54,8 +48,6 @@
         double floorPrice =   [prices[4] doubleValue];
         
         NSLog(@"%f, %f, %f, %f", openingPrice, closingPrice, ceilingPrice, floorPrice);
-        
-//        CGContextSetRGBStrokeColor(context, 1, 0, 0, 1);
         
         /* 设置填充色 */
         if (openingPrice > closingPrice) {        // 红
