@@ -22,10 +22,14 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.list = [[NSMutableArray alloc] initWithCapacity:0];
-//    [self.list addObject:@[@6.79, @6.68, @6.83, @6.62]];
-    [self.list addObjectsFromArray:[NSArray arrayWithContentsOfFile:@"/Users/ly/Documents/Projects/LineChart/LineChart/silver.plist"]];
     
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"silver" ofType:@"plist"];
+    
+    self.list = [[NSMutableArray alloc] initWithCapacity:0];
+    [self.list addObjectsFromArray:[NSArray arrayWithContentsOfFile:filePath]];
+     
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%@", self.list);
 }
 
 
@@ -33,6 +37,8 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     double zoomScale = 100;
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -69,10 +75,10 @@
             height = 1;
         
         
-        CGContextFillRect(context, CGRectMake(i*11, openingPrice*zoomScale, 11, height));
+        CGContextFillRect(context, CGRectMake(i*10, openingPrice*zoomScale, 7, height));
         CGContextBeginPath(context);
-        CGContextMoveToPoint(context, i*11+6, ceilingPrice*zoomScale);
-        CGContextAddLineToPoint(context, i*11+6, floorPrice*zoomScale);
+        CGContextMoveToPoint(context, i*10+4, ceilingPrice*zoomScale);
+        CGContextAddLineToPoint(context, i*10+4, floorPrice*zoomScale);
         CGContextClosePath(context);
         CGContextStrokePath(context);
     }
