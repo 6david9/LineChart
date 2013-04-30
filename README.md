@@ -3,5 +3,5 @@ LineChart
 
 Candle Chart
 
-<h2>Screen Shot</h2>
-<img src="http://www.cocoabit.com/linechart/1.png" />
+## Screen Shot
+![效果图](./img_1.png)
